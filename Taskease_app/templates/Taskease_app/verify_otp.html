@@ -1,0 +1,44 @@
+
+{%  extends 'Taskease_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<script>
+  function redirectToPaymentpage() {
+      window.location.href = 'payment-page';
+  }
+</script>
+
+
+  <!-- ======= Pricing Section ======= -->
+  <section id="signin" class="signin">
+  <div class="container d-flex align-items-center justify-content-center min-vh-100">
+      <div class="section-title">
+        <h2>OTP Verification</h2>
+      </div>
+
+      {% if messages %}
+          {% for message in messages %}
+              <div>{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+      
+      <div class="col-lg-4 d-flex align-items-stretch">
+          <form action="" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
+              <div class="row">
+                  <div class="form-group col-md-12">
+                    <label for="email">Enter OTP:</label>
+                    <input type="text" class="form-control" name="otp" id="otp" required>
+                  </div>
+                  <div class="text-center">
+                      <button type="submit">Submit</button>
+                  </div>
+              </div>
+          </form>  
+      </div>
+  </div>
+</section>
+</body>
+{% endblock %}

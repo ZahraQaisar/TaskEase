@@ -1,0 +1,58 @@
+{% extends 'Taskease_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<body>
+
+  <!-- ======= Signup Section ======= -->
+  <section id="signup" class="signup">
+    <div class="container d-flex align-items-center justify-content-center min-vh-100" style="margin-bottom:130px">
+      <div class="section-title">
+        <h2 style="margin-top:200px">Sign Up</h2>
+      </div>
+
+      <!-- Display messages here -->
+      {% if messages %}
+        <ul class="messages" style="color: red; list-style-type: none;">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="col-lg-4 d-flex align-items-stretch">
+        <form action="{% url 'Taskease_app-signup-page' %}" method="post" role="form" class="php-email-form" style="padding-left: 20px;">
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="name">User Name</label>
+              <input type="text" name="username" class="form-control" id="name" required>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="email">Email Address</label>
+              <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="password">Password</label>
+              <input type="password" name="password1" class="form-control" id="password" required>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" name="password2" class="form-control" id="confirm-password" required>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit">Sign Up</button>
+          </div>
+          <p align='center'>Already have an account? <a href="{% url 'Taskease_app-signin-page' %}">Sign In</a></p>
+        </form>
+      </div>
+
+    </div>
+  </section><!-- End Signup Section -->
+
+{% endblock %}

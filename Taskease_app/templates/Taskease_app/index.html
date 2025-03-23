@@ -1,0 +1,730 @@
+{% extends 'Taskease_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+  <script>
+    function redirectToPaymentpage() {
+        window.location.href = 'payment-page';
+    }
+  </script>
+  </head>
+
+  <body>
+
+    {% if messages %}
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- ======= Hero Section ======= -->
+
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>{{settings.heading}}</h1>
+          <h2>{{settings.intro_descp}}</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#helpers" class="btn-get-started scrollto">Hire Now</a>
+            {% comment %} <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> {% endcomment %}
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{{settings.background_img.url}}" class="img-fluid" alt="">
+        </div>
+        {% comment %} <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="static/Taskease_app/assets/img/mainimg2.png" class="img-fluid animated" alt="">
+        </div> {% endcomment %}
+      </div>
+      
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    {% comment %} <!-- ======= Cliens Section ======= -->
+    <section id="cliens" class="cliens section-bg">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="static/Taskease_app/assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="static/Taskease_app/assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="static/Taskease_app/assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="static/Taskease_app/assets/img/clients/client-4.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="static/Taskease_app/assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="static/Taskease_app/assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Cliens Section --> {% endcomment %}
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            {% for abt in about%}
+            <p>
+              {{abt.about_descp1}}
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> {{abt.about_list1}}</li>
+              <li><i class="ri-check-double-line"></i> {{abt.about_list2}}</li>
+              <li><i class="ri-check-double-line"></i> {{abt.about_list3}}</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              {{abt.about_descp2}}
+            </p>
+            {% endfor %}
+            <a href="#" class="btn-learn-more">Learn More</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+            <div class="content">
+              <h3><strong>Why Us?</strong></h3>
+            </div>
+
+            <div class="accordion-list">
+              <ul>
+                {% for wu in whyus%}
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-{{wu.id}}" class="collapsed"><span>0{{wu.id}}</span>{{wu.whyus_question}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-{{wu.id}}" class="collapse" data-bs-parent=".accordion-list">
+                    <p>{{wu.whyus_answer}}</p>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 align-items-stretch order-1 order-lg-2 img" 
+          style="background-image: url('{{ settings.whyus_background_img.url }}');" 
+          data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+        </div>
+
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Skills Section ======= -->
+    {% comment %} <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+            <img src="{% static 'Taskease_app/assets/img/skills.png' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+            <h3>Voluptatem dignissimos provident quasi corporis voluptates</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+
+            <div class="skills-content">
+
+              <div class="progress">
+                <span class="skill">HTML <i class="val">100%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">CSS <i class="val">90%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">JavaScript <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">Photoshop <i class="val">55%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Skills Section --> {% endcomment %}
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>{{settings.services_title}}</h2>
+          <p>{{settings.service_descrpt}}</p>
+        </div>
+
+        <div class="row">
+          {% for srv in service %}
+          <div class="col-xl-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box d-flex flex-column align-items-center justify-content-center text-center">
+                  <div class="icon mb-3">
+                      <i class="bx {{srv.service_icon_name}}"></i>
+                  </div>
+                  <h4><a href="">{{srv.service_name}}</a></h4>
+                  {% comment %} <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p> {%endcomment %}
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>{{callus.callus_title}}</h3>
+            <p>{{callus.callus_descrpt}}</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" id="callButton" href="tel:{{callus.callus_num}}">{{callus.callus_button_title}}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        function isMobileDevice() {
+          return /Mobi|Android/i.test(navigator.userAgent);
+        }
+  
+        const callButton = document.getElementById('callButton');
+        if (!isMobileDevice()) {
+          callButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action
+            alert('This feature is available only on mobile devices.');
+          });
+        }
+      });
+    </script>
+    <!-- End Cta Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    {% comment %} <section id="portfolio" class="portfolio section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Helpers</h2>
+        </div>
+
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">Peon-Maid</li>
+          <li data-filter=".filter-card">Male-Female Guard</li>
+          <li data-filter=".filter-web">Driver</li>
+          <li data-filter=".filter-web">Care-Taker</li>
+          <li data-filter=".filter-web">Waiter</li>
+          <li data-filter=".filter-web">Cook</li>
+        </ul>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 portfolio-item filter-app">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img src="{% static 'Taskease_app/assets/img/team/team-1.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Helper 1</h4>
+                <span>
+                    <div class="icon-box">
+                      <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                  </div>
+                </span>
+                <p>Name : HelperNumber1</p>
+                <p>Details: Aut maiores voluptates amet et quis praesentium qui senda para</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-3.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 2</h4>
+              <p>App</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-3.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 2</h4>
+              <p>Card</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="{% static 'Taskease_app/assets/img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="{% static 'Taskease_app/assets/img/portfolio/portfolio-9.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->  {% endcomment %}
+
+    <!-- ======= Helpers Section ======= -->
+    <section id="helpers" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <section id="portfolio" class="portfolio section-bg">
+          <div class="container" data-aos="fade-up">
+    
+            <div class="section-title">
+              <h2>{{settings.helpers_title}}</h2>
+            </div>
+    
+            <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-peon">Peon/Maid</li>
+              <li data-filter=".filter-guard">Male/Female Guard</li>
+              <li data-filter=".filter-driver">Driver</li>
+              <li data-filter=".filter-care">Care-Taker</li>
+              <li data-filter=".filter-waiter">Waiter</li>
+              <li data-filter=".filter-cook">Cook</li>
+
+            </ul>
+          </div>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+              {% for helper in helpers %}
+  <div class="col-lg-4 portfolio-item {{ helper.filter_designation }}">
+    <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+      
+      <!-- Image Section -->
+      {% if helper.helper_image %}
+          <img src="{{ helper.helper_image.url }}" class="img-fluid helper-img" alt="{{ helper.helper_name }}">
+      {% else %}
+          <img src="{{ helper.helper_image }}" class="img-fluid helper-img" alt="Default Helper Image"
+          style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
+      {% endif %}
+
+
+      <!-- Helper Information -->
+      <div class="member-info">
+        <h4>{{ helper.helper_name }}</h4>
+        
+        <!-- Star Rating -->
+        <span>
+          <div class="icon-box">
+            <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+          </div>
+        </span>
+
+        <!-- Details -->
+        <div>
+          <p><strong>Id:</strong> {{ helper.id }}</p>
+          <p><strong>Age:</strong> {{ helper.helper_age }}</p>
+          <p><strong>Experience:</strong> {{ helper.experience }} years</p>
+          <p><strong>Location:</strong> {{ helper.location }}</p>
+          <p><strong>Designation:</strong> <span style="font-size: 18px;">{{ helper.helper_designation }}</span></p>
+      </div>
+
+        <!-- Hire Button -->
+        <div class="button">
+          <a class="nav-link scrollto" href="#contact" style="text-decoration: none; padding: 0 !important;">
+            <button type="button" data-helper-id="{{ helper.id }}" class="btn btn-warning hire_btn">
+              Hire Now
+            </button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+            </div>
+        </section>
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Hirirng Section ======= -->
+        <section id="contact" class="contact">
+          <div class="container" data-aos="fade-up">
+    
+            <div class="row">
+
+              <div class="section-title">
+                <h2>{{settings.hiringform_title}}</h2>
+              </div>
+    
+              <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+                <form method="post" role="form" class="php-email-form" action="{% url 'Taskease_app-index' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="form_type" value="hiring">
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="name">Full Name</label>
+                      <input type="text" name="hiring_name" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Email Address</label>
+                      <input type="email" class="form-control" name="hiring_email" id="email" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Home Address</label>
+                      <input type="text" name="hiring_address" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Phone</label>
+                      <input type="integer" class="form-control" name="hiring_phone" id="phone" required>
+                    </div>
+                    {% comment %} <div class="form-group col-md-6">
+                      <label for="name">Helper Name</label>
+                      <input type="text" name="name" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Helper Id</label>
+                      <input type="integer" class="form-control" name="helperid" id="helperid" required>
+                    </div> {% endcomment %}
+                    <form id="myForm">
+                      <select name="hiring_helper" id="helper_dropdown" class="form-select" style="width: 97.75%; height: 47px; margin-left:12px; margin-bottom:30px;" aria-label="Default select example" required>
+                          <option value="" selected>Select helper from here...</option>
+                          {% for helper in helpers %}
+                          <option value="{{ helper.id }}">{{ helper.helper_name }}</option>
+                          {% endfor %}
+                      </select>
+                      <form id="paymentForm" method="post" action="{% url 'Taskease_app-payment-page' %}">
+                        {% csrf_token %}
+                        <div class="text-center">
+                            <button type="submit">Pay by Card*</button>
+                        </div>
+                      </form>
+                    </form>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </section><!-- End hirirng Section -->
+<!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>{{settings.faq_title}}</h2>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            {% for faq in faqs %}
+            <li data-aos="fade-up" data-aos-delay="{{faq.data_delay}}">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-{{faq.id}}">{{faq.question}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-{{faq.id}}" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                 {{faq.answer}}
+                </p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>{{settings.contact_title}}</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi {{settings.location_icon_name}}"></i>
+                <h4>Location:</h4>
+                <p>{{settings.location}}</p>
+              </div>
+
+              <div class="email">
+                <i class="bi {{settings.email_icon_name}}"></i>
+                <h4>Email:</h4>
+                <p>{{settings.taskease_email}}</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi {{settings.phone_icon_name}}"></i>
+                <h4>Call:</h4>
+                <p>{{settings.taskease_phone}}</p>
+              </div>
+
+              <iframe src="{{settings.location_map}}" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
+              <input type="hidden" name="form_type" value="contact">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="client_name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="client_email" id="email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="client_subject" id="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="client_message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Newsletter ======= -->
+
+<newsletter id = "newsletter">
+  <div class="newsletter-newsletter">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-6">
+                  <h4>{{settings.newsletter_title}}</h4>
+                  <p>{{settings.newsletter_decrpt}}</p>
+                  <form action="" method="post">
+                      <input type="email" name="email"><input type="submit" value="Subscribe">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</newsletter>
+
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 footer-contact" style="padding-right:90px;">
+          <a href="index.html" class="logo me-auto">
+          <img src="{{ settings.logo.url }}" alt="" class="img-fluid">
+        </a>
+        
+          <p><br>
+             {% comment %} A108 Adam Street <br>
+            New York, NY 535022<br>
+            United States <br><br> {% endcomment %}
+
+            <strong>Location:</strong> {{settings.location}}<br>
+            <strong>Phone:</strong> {{settings.taskease_phone}}<br>
+            <strong>Email:</strong> {{settings.taskease_email}}<br>
+            <div class="social-links mt-2">
+              <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#services">Homes</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#services">Offices</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#services">Restaurants</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#services">Hospitals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#services">Factories</a></li>
+          </ul>
+        </div>
+
+        {% comment %} <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Social Networks</h4>
+          <p>For more updates and services follow us on our social media networks</p>
+          <div class="social-links mt-3">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div> {% endcomment %}
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+      var select = document.getElementById("helper_dropdown");
+      if (select.value === "") {
+          event.preventDefault(); // Prevent form submission
+          alert("Please select a helper from the list."); // Custom message
+      }
+  });
+</script>
+<script>
+document.getElementById('profilePhotoForm').addEventListener('submit', function(event) {
+  if (!userIsAuthenticated) { // Replace with actual condition
+    event.preventDefault(); // Prevent the form from submitting
+    alert('Please log in to proceed to the payment page.');
+  }
+});
+</script>
+  
+
+{% endblock %}

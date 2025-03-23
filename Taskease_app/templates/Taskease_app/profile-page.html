@@ -1,0 +1,51 @@
+{% extends 'Taskease_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="signin" class="signin">
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="section-title">
+            <h2 style="margin-top:50px">Profile Page</h2>
+        </div>
+        <div class="col-lg-4 d-flex align-items-stretch">
+            <form action="" method="POST" role="form" class="php-email-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Display current image or default image -->
+                <div class="col-lg-12 d-flex align-items-center justify-content-center" style="margin-bottom:20px;">
+                    <img src="{% if profile.image %}{{ profile.image.url }}{% else %}{% static 'Taskease_app/assets/img/userprofile.png' %}{% endif %}"width="70" height="70" class="rounded-circle" alt="Profile Picture" style="border:0.5px solid grey; margin-right:20px;">
+                    <p style="font-weight:bold;margin-top:20px;color:#ffbb29;cursor:pointer;">{{ user.username }}</p>
+                </div>
+                
+                <hr>
+                
+                <div class="row">
+                    <div class="form-group col-md-12 mt-3 mb-0">
+                        <p><span style="font-weight: bold;">UserName:</span> {{ user.username }}</p>
+                        <p><span style="font-weight: bold;">Email:</span> {{ user.email }}</p>
+                    </div>
+                </div>
+
+                <!-- File input to upload a new image -->
+                <div class="form-group" style="margin-bottom:0px">
+                    <span style="font-weight: bold; "><label for="id_image">Change Profile Image</label></span>
+                    {{ form.image }}
+                </div>
+
+                <!-- Button to submit the new image -->
+                <div class="form-group" style=" margin-bottom:0;text-align: center;">
+                    <button type="submit" style="width: 137px; padding: 10px 20px; font-size: 14px;">Update Image</button>
+                </div>
+
+                <!-- Button to remove the current profile image -->
+                {% if profile.image %}
+                    <div class="form-group" style="margin-bottom:0;text-align: center;">
+                        <button type="submit" name="remove_image" style="width: 137px; padding: 10px 20px; font-size: 14px;">Remove Image</button>
+                    </div>
+                {% endif %}
+                
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
